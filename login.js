@@ -11,20 +11,36 @@ function showNextImage() {
 // Ganti gambar setiap 3 detik
 setInterval(showNextImage, 3000);
 
+//Login dan Error Pop Up
 document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
     const button = document.getElementById('button');
     const username = document.getElementById('username');
     const password = document.getElementById('password');
+    const error = document.getElementById('errorLogin');
+    const closeError = document.querySelector('.close');
 
     button.addEventListener('click', function() {
-        // Validasi kredensial
+
         if (username.value === 'Kelompok 2' && password.value === 'mk3c') {
-            // Arahkan ke halaman index.blade.php
-            window.location.href = 'index.html'; // Sesuaikan dengan route yang sesuai
+      
+            window.location.href = 'index.html'; 
         } else {
-            // Tampilkan alert jika kredensial salah
-            alert('Username atau password salah!');
+
+            error.style.display = 'flex';
+        }
+    });
+
+   
+    closeError.addEventListener('click', function() {
+        error.style.display = 'none';
+    });
+
+
+    window.addEventListener('click', function(event) {
+        if (event.target === error) {
+            error.style.display = 'none';
         }
     });
 });
+
